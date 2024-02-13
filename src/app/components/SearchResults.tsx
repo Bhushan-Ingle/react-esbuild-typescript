@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FaCheck, FaTimes, FaClock } from 'react-icons/fa';
-
+import './SearchResults.css';
 
 interface SearchResultItem {
     name: string;
@@ -27,18 +27,27 @@ const StatusIcon = ({ compStatus }: { compStatus: string }) => {
 
 const ResultItem = (item: SearchResultItem) => {
     return (
-        <div>
-            <div>Name: {item.name}</div>
-            <div>Description: {item.description}</div>
-            <div>Status: <StatusIcon compStatus={item.status} /></div>
-            {item.errorMsg && <div>Error: {item.errorMsg}</div>}
+        <div className="grid-row">
+            <div>{item.name}</div>
+            <div>{item.description}</div>
+            <div>
+                <StatusIcon compStatus={item.status} />
+            </div>
+            <div>{item.errorMsg}</div>
         </div>
     );
 };
 
 const SearchResults: React.FC<{ results: SearchResultItem[] }> = ({ results }) => {
     return (
-        <div>
+        <div className="search-results-container">
+            {/* Column headers */}
+            <div className="grid-header">
+                <div>Name</div>
+                <div>Description</div>
+                <div>Status</div>
+                <div>Error</div>
+            </div>
             {results.map((item: SearchResultItem, index: React.Key) => (
                 <ResultItem key={index} {...item} />
             ))}

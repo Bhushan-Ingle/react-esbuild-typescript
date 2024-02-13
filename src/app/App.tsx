@@ -1,5 +1,18 @@
-import React from 'react'
+import React from 'react';
+import Home from './pages/Home';
+import './app.css';
 
-interface AppProps {}
-const App = (props: AppProps) => <div>hola world</div>
+const App = () => {
+  return (
+    <div>
+      <header className="header">
+        <h1>My App</h1>
+      </header>
+      <main className="main-content">
+        <Home />
+      </main>
+    </div>
+  );
+};
+
 export default App;

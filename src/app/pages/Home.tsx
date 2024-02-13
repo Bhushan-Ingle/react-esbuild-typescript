@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import SearchResults from '../components/SearchResults';
 import { useQuery } from 'react-query';
+import './Home.css'; 
 
 const fetchSearchResults = async (searchTerm: string) => {
     const response = await fetch(`http://localhost:3000/api/data`);
@@ -23,7 +24,8 @@ const Home = () => {
         refetch();
     };
     return (
-        <div>
+        <div className="home-container">
+            <div className="input-container">            
             <input
                 type="text"
                 placeholder="Enter search term"
@@ -44,6 +46,7 @@ const Home = () => {
                     <SearchResults results={searchResults} />
                 </div>
             )}
+            </div>
         </div>
     );
 };
